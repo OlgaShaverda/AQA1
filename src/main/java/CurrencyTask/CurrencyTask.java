@@ -20,10 +20,9 @@ public class CurrencyTask {
 
         System.out.println("Enter the amount in UAH you want to convert");
 
-        //TODO: добавить обработку пробелов
         while (scan.hasNext()) {
-            double usd = calc(checker(scan.next().replaceAll(" ", "")), kurs);
-            System.out.printf("Your USD amount is %.2f (exchange rate %.2f)\n", usd, kurs);
+            double usd = calc(check(scan.next().replaceAll(",", ".")), kurs);
+            System.out.printf("Your USD amount is %.2f (exchange rate is %.2f)\n", usd, kurs);
         }
 
     }
@@ -34,7 +33,7 @@ public class CurrencyTask {
     }
 
     // Check input value
-    public static double checker(String input) {
+    public static double check(String input) {
         try {
             double res = new Double(input);
             if (res > 0) {
@@ -46,7 +45,7 @@ public class CurrencyTask {
             checkQuit(input);
             System.out.println("Please use numeric symbols");
         }
-        return checker(scan.next());
+        return check(scan.next());
     }
 
     // Check string via regExp
